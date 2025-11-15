@@ -255,8 +255,14 @@ def stop_task(username, task_id):
 @app.route("/my_tasks")
 def my_tasks():
     username = session.get("username", get_user_id())
-    user_tasks = running_tasks.get(username, {})
-    return render_template("my_tasks.html", username=username, tasks=user_tasks)
+
+    # Debug print — console me dikhai dega
+    print("🟣 Logged-in Username:", username)
+    print("🟡 All Running Tasks:", running_tasks)
+    print("🟢 This User Tasks:", running_tasks.get(username, {}))
+
+    tasks = running_tasks.get(username, {})
+    return render_template("my_tasks.html", username=username, tasks=tasks)
 
 # ----------------- Admin & Approval -----------------
 @app.route('/approval_request', methods=['GET', 'POST'])
