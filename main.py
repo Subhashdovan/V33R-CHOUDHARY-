@@ -372,7 +372,7 @@ def self_ping():
 if __name__ == '__main__':
     init_db()
 
-    for task_id, username, type_, params in load_running_tasks():
+    for task_id, username, type_, status, params in load_running_tasks():
         params = json.loads(params)
         stop_events[task_id] = Event()
 
@@ -394,7 +394,7 @@ if __name__ == '__main__':
 
         threads[task_id] = thread
         thread.start()
-        running_tasks.setdefault(username, {})[task_id] = {"type": type_, "status": "running"}
+        running_tasks.setdefault(username, {})[task_id] = {"type": type_, "status": status}
 
     ping_thread = Thread(target=self_ping, daemon=True)
     ping_thread.start()
