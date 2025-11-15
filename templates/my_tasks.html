@@ -53,7 +53,9 @@ body {background: url("https://i.ibb.co/rf2KS8j5/Picsart-25-11-10-16-10-04-092.j
           <div class="glass rounded-xl p-4 sm:p-6 border border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
             <div class="flex-1 break-all">
               <p class="font-semibold text-sm sm:text-base" id="task-{{ loop.index }}">Task ID: {{ task_id }}</p>
-              <p class="text-xs sm:text-sm text-blue-200">Type: {{ task.type }} | Status: {{ task.status }}</p>
+              <p class="text-xs sm:text-sm text-blue-200">
+  Type: {{ task["type"] }} | Status: {{ task["status"] }}
+              </p>
             </div>
             <div class="flex gap-2 flex-wrap mt-2 sm:mt-0">
               <button onclick="copyTaskId('{{ loop.index }}')" 
